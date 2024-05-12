@@ -1,8 +1,10 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('./nav.css');
 
 :root {
     --bg-clr: #fafafa;
     --txt-clr: #4c5160;
+    --main-clr: #3373E6;
 }
 
 /* Estilos específicos para el modo oscuro */
@@ -12,3 +14,4 @@
       color: #ffffff;
     }
 } */
+

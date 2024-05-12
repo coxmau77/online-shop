@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>root site</title>
-
+    <title>./index.html</title>
+    <link rel="icon" href="./public/images/brand/brand-icon.svg" type="image/svg+xml"> 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWWE3L9BK4"></script>
     <script>
@@ -15,12 +15,25 @@
 
         gtag('config', 'G-FWWE3L9BK4');
     </script>
+    <!-- Redireccion -->
+    <meta http-equiv="refresh" content="2; url=./public">
+    <style>
+        body{
+            background-color: #3373E6;
+            height: 100dvh;
+            display: flex;
+            place-content: center;
+            overflow: hidden;
+        }
 
+        img {
+            width: 8rem;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Lorem ipsum dolor sit amet.</h1>
-    <a href="./public/index.html">Ir al sitio principal public/index.html</a>
+    <img src="./public/images/brand/brand-icon.svg" alt="logo onlineshop">   
 </body>
-
+ 
 </html>
