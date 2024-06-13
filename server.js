@@ -15,6 +15,21 @@ app.get("/", (request, response) => {
     response.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get("/contact", (request, response) => {
+    // Enviar un documento al cliente
+    response.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
+app.get("/signup", (request, response) => {
+    // Enviar un documento al cliente
+    response.sendFile(path.join(__dirname, 'public', 'signup.html'));
+});
+
+app.post("/signup", (request, response) => {
+    // Enviar un documento al cliente
+    response.send("Se envia en el body los datos del form a una BD");
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor en ejecición  http://localhost:${PORT}`);
 })
