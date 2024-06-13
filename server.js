@@ -5,8 +5,8 @@ const app = express();
 const PORT = 3000;
 
 app.get("/", (request, response) => {
-    // Esto se muestra al cliente
-    response.send("Script que debe levantar un servidor");
+    // Enviar un documento al cliente
+    response.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(PORT, () => {
