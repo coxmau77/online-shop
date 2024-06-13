@@ -1,0 +1,29 @@
+{
+  "name": "online-shop",
+  "version": "1.0.0",
+  "description": "Tienda virtual de productos ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coxmau77/online-shop.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javaScript",
+    "node",
+    "express",
+    "sql",
+    "no-sql"
+  ],
+  "author": "Mauricio Cox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coxmau77/online-shop/issues"
+  },
+  "homepage": "https://github.com/coxmau77/online-shop#readme"
+}
