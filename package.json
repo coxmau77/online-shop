@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/coxmau77/online-shop/issues"
   },
-  "homepage": "https://github.com/coxmau77/online-shop#readme"
+  "homepage": "https://github.com/coxmau77/online-shop#readme",
+  "dependencies": {
+    "express": "4.19.2"
+  }
 }
