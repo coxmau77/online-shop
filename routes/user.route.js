@@ -2,6 +2,16 @@ console.log(">>> user route executed :) <<<");
 const express = require('express');
 const router = express.Router();
 
+// simulando un array de usuarios
+let users = [
+    { id: 1, nombre: "pepe", mail: "pepe@correo.com", favorite: ["a", "e", "i"], member: false, permiso: "user" },
+    { id: 2, nombre: "mony", mail: "mony@correo.com", favorite: ["x", "y", "z"], member: false, permiso: "user" },
+    { id: 3, nombre: "koqui", mail: "koqui@correo.com", favorite: ["a", "b", "c"], member: false, permiso: "user" },
+    { id: 4, nombre: "paulita", mail: "paulita@correo.com", favorite: ["1", "2", "3"], member: false, permiso: "user" },
+    { id: 5, nombre: "dardo", mail: "dardo@correo.com", favorite: ["i", "j", "s"], member: false, permiso: "user" },
+    { id: 5, nombre: "maría elena", mail: "maria_elena@correo.com", favorite: ["m", "t", "n"], member: false, permiso: "user" },
+];
+
 // GET
 router.get('/', (request, response) => {
     // response.send("Ruta funcionando")
@@ -16,11 +26,12 @@ router.get('/', (request, response) => {
 
 router.get('/all', (request, response) => {
     // response.send("Ruta funcionando")
-    response.json({
-        message: "Ver todos los usuarios de http://localhost:3000/user/all",
-        nombre: "Mauricio",
-        apellido: "Cox"
-    });
+    // response.json({
+    //     message: "Ver todos los usuarios de http://localhost:3000/user/all",
+    //     nombre: "Mauricio",
+    //     apellido: "Cox"
+    // });
+    response.json(users);
 });
 
 router.get("/profile", (request, response) => {
