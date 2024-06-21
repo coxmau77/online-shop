@@ -34,11 +34,33 @@ router.get('/all', (request, response) => {
     response.json(users);
 });
 
-router.get("/profile", (request, response) => {
-    // Enviar un documento al cliente
-    // response.sendFile(path.join(__dirname, 'public', 'profile.html'));
-    response.status(200).send("Perfil de usuario profile.html >")
+// QueryParams
+router.get('/name/:nombre', (request, response) => {
+    console.log("ruta user id", request.params);
+    const userName = users.filter(user => user.nombre.toLowerCase() == request.params.nombre);
+
+    console.log(userName);
+    if (userName) response.status(200).send(`El parametro "nombre: ${request.params.nombre}" no se encuentra`);
+
+    // response.json(userName);
+
 });
+
+router.get('/:id', (request, response) => {
+
+    console.log(request.params);
+    const userID = users.find(user => user.id === parseInt(request.params.id));
+    if (!userID) return response.status(404).send(`El parametro "id: ${request.params.id}" no se encuentra`);
+
+    response.json(userID);
+});
+
+// router.get("/profile", (request, response) => {
+//     // Enviar un documento al cliente
+//     // response.sendFile(path.join(__dirname, 'public', 'profile.html'));
+//     console.log("profile executed");
+//     response.status(200).send("Perfil de usuario profile.html >")
+// });
 
 // POST Esta ruta maneja las solicitudes POST a / signup y debería imprimir el contenido del cuerpo de la solicitud en la consola.
 router.post("/signup", (request, response) => {
