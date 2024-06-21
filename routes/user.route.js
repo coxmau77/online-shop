@@ -9,7 +9,7 @@ let users = [
     { id: 3, nombre: "koqui", mail: "koqui@correo.com", favorite: ["a", "b", "c"], member: false, permiso: "user" },
     { id: 4, nombre: "paulita", mail: "paulita@correo.com", favorite: ["1", "2", "3"], member: false, permiso: "user" },
     { id: 5, nombre: "dardo", mail: "dardo@correo.com", favorite: ["i", "j", "s"], member: false, permiso: "user" },
-    { id: 5, nombre: "maría elena", mail: "maria_elena@correo.com", favorite: ["m", "t", "n"], member: false, permiso: "user" },
+    { id: 6, nombre: "maría elena", mail: "maria_elena@correo.com", favorite: ["m", "t", "n"], member: false, permiso: "user" },
 ];
 
 // GET
@@ -91,10 +91,32 @@ router.post('/signup', (request, response) => {
 });
 
 router.post('/registro', (request, response) => {
-    response.status(200).send("Ruta de registro")
+
+    console.log(request.body);
+    // Datos que necesitamos para dar de alta a un usuario
+    /*{ id: 1, nombre: "pepe", mail: "pepe@correo.com", favorite: ["a", "e", "i"], member: false, permiso: "user" }*/
+    const { nombre, mail } = request.body;
+
+    // const nuevoUsuario = {
+    //     id: users.length + 1,
+    //     nombre: nombre,
+    //     mail: mail
+    // }
+    const nuevoUsuario = {
+        id: users.length + 1,
+        nombre,
+        mail
+    }
+
+    users.push(nuevoUsuario);
+
+    response.status(201).json(nuevoUsuario);
 });
 
 // PUT
+router.put("/:id", (request, response) => {
+
+});
 
 
 // DELETE
