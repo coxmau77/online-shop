@@ -39,10 +39,10 @@ router.get('/name/:nombre', (request, response) => {
     console.log("ruta user id", request.params);
     const userName = users.filter(user => user.nombre.toLowerCase() == request.params.nombre);
 
-    console.log(userName);
-    if (userName) response.status(200).send(`El parametro "nombre: ${request.params.nombre}" no se encuentra`);
+    console.log(">>>", userName);
+    if (userName.length == 0) response.status(404).send(`El parametro "nombre: ${request.params.nombre}" no se encuentra`);
 
-    // response.json(userName);
+    response.json(userName);
 
 });
 
