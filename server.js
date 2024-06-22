@@ -1,9 +1,9 @@
 // servidor estatico en express
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Middleware para analizar cuerpos de solicitud con formato JSON y datos URL codificados
+// Middleware para analizar cuerpos de solicitud con formato JSON y datos URL codificados para el formulario.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

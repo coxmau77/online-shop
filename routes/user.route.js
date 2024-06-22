@@ -13,7 +13,10 @@ router.post('/registro', userController.createUser);
 router.put('/:id', userController.uploadUser);
 router.delete('/:id', userController.deleteUser);
 
-// // simulando un array de usuarios
+/** Recordar siempre exportar el modulo creado */
+module.exports = router;
+
+// // -----------------------------------<>---------------------------------- simulando un array de usuarios
 // let users = [
 //     { id: 1, nombre: "pepe", mail: "pepe@correo.com", favorite: ["a", "e", "i"], member: false, permiso: "user" },
 //     { id: 2, nombre: "mony", mail: "mony@correo.com", favorite: ["x", "y", "z"], member: false, permiso: "user" },
@@ -155,6 +158,3 @@ router.delete('/:id', userController.deleteUser);
 //     }
 
 // });
-
-/** Recordar siempre exportar el modulo creado */
-module.exports = router;
