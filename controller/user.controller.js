@@ -91,7 +91,20 @@ const uploadUser = (request, response) => {
 }
 
 const deleteUser = (request, response) => {
+    const { id } = request.params;
+    const SQL = 'DELETE FROM usuarios WHERE id = ?';
 
+    dataBase.query(SQL, [id], (error, result) => {
+
+        if (error) {
+            return response.status(500).json({ mensaje: 'Error NO EXISTE el usuario', error });
+        }
+
+        response.json({
+            mensaje: "Usuario ELIMINADO con éxito"
+        })
+
+    })
 }
 
 module.exports = {
