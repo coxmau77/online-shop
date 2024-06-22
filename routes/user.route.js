@@ -116,10 +116,25 @@ router.post('/registro', (request, response) => {
 // PUT
 router.put("/:id", (request, response) => {
 
+    const { nombre, mail } = request.body;
+
+    const user = users.find(user => user.id === parseInt(request.params.id));
+
+    if (!user) return response.status(404).send("No existe el usuario para editar");
+
+    user.nombre = nombre || user.nombre;
+    user.mail = mail || user.mail;
+
+    console.log(user);
+    response.json(user);
 });
 
 
 // DELETE
+router.delete("/:id", (request, response) => {
+    response.status(200).send("post index productos");
+});
+
 
 /** Recordar siempre exportar el modulo creado */
 module.exports = router;

@@ -9,10 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Router
 const userRoute = require('./routes/user.route');
+const productRoute = require('./routes/product.route');
 
 // Middlewares
 app.use(express.static('public'));
 app.use('/user', userRoute);
+app.use('/product', productRoute);
 
 app.listen(PORT, () => {
     console.log(`Servidor en ejecución  http://localhost:${PORT}`);
