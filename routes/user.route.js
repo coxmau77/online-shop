@@ -132,7 +132,18 @@ router.put("/:id", (request, response) => {
 
 // DELETE
 router.delete("/:id", (request, response) => {
-    response.status(200).send("post index productos");
+
+    const userID = users.findIndex(user => user.id === parseInt(request.params.id));
+
+    if (userID < 0) {
+        return response.status(404).send("Usuario no encontrado");
+
+    } else {
+        const deletedUser = users.splice(userID, 1);
+
+        response.status(200).json(deletedUser);
+    }
+
 });
 
 
