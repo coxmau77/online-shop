@@ -38,9 +38,61 @@ const getUserID = (request, response) => {
 };
 
 const getUserName = (request, response) => { }
-const createUser = (request, response) => { }
-const uploadUser = (request, response) => { }
-const deleteUser = (request, response) => { }
+
+const createUser = (request, response) => {
+    // nombre, mail, favorite, member, permiso
+    // 'pepe', 'pepe@correo.com', '["a", "e", "i"]', FALSE, 'user'
+    const { nombre, mail, favorite, member, permiso } = request.body;
+
+    // Validación básica de entrada
+    if (!nombre || !mail || !favorite || typeof member === 'undefined' || !permiso) {
+        return response.status(400).json({ mensaje: 'Todos los campos son requeridos.' });
+    }
+
+    // Convertir el campo 'favorite' a JSON
+    const favoriteJSON = JSON.stringify(favorite);
+
+    const SQL = 'INSERT INTO usuarios (nombre, mail, favorite, member, permiso) VALUES (?,?,?,?,?)';
+
+    dataBase.query(SQL, [nombre, mail, favoriteJSON, member, permiso], (error, result) => {
+
+        if (error) {
+            return response.status(500).json({ mensaje: 'Error al crear el usuario', error });
+        }
+
+        response.json({
+            mensaje: "Usuario creado con éxito",
+            idUsuario: result.insertId
+        });
+    });
+
+}
+
+const uploadUser = (request, response) => {
+    const { id } = request.params;
+    const { mail, favorite } = request.body;
+
+    // Convertir el campo 'favorite' a JSON
+    const favoriteJSON = JSON.stringify(favorite);
+
+    const SQL = 'UPDATE usuarios SET mail = ?, favorite = ? WHERE id = ?';
+
+    dataBase.query(SQL, [mail, favoriteJSON, id], (error, result) => {
+
+        if (error) {
+            return response.status(500).json({ mensaje: 'Error al editar el usuario', error });
+        }
+
+        response.json({
+            mensaje: "Usuario EDITADO con éxito"
+        })
+
+    });
+}
+
+const deleteUser = (request, response) => {
+
+}
 
 module.exports = {
     getAll,

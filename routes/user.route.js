@@ -10,7 +10,7 @@ router.get('/:id', userController.getUserID);
 router.get('/:id', userController.getUserID);
 router.get('/name:nombre', userController.getUserName);
 router.post('/registro', userController.createUser);
-router.put('/registro', userController.uploadUser);
+router.put('/:id', userController.uploadUser);
 router.delete('/:id', userController.deleteUser);
 
 // // simulando un array de usuarios
