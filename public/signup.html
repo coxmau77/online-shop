@@ -5,16 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
 </head>
 
 <body>
     <h1>Registrarse</h1>
-    <form>
-        <input type="text" name="name" placeholder="Ingresa tu nombre">
-        <input type="email" name="email" placeholder="correo@email.com">
-        <input type="password" name="password" placeholder="********">
-        <button>Registrarme</button>
+
+    <button id="mostrarCrearUsuarioFormBtn">+ crear usuario</button>
+
+    <form id="crearUusarioForm" class="hidden" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required><br><br>
+
+        <label for="favorite">Favoritos:</label><br>
+        <input type="checkbox" id="favA" name="favorite" value="a">
+        <label for="favA">A</label><br>
+        <input type="checkbox" id="favE" name="favorite" value="e">
+        <label for="favE">E</label><br>
+        <input type="checkbox" id="favI" name="favorite" value="i">
+        <label for="favI">I</label><br><br>
+
+        <label for="member">Miembro:</label>
+        <input type="checkbox" id="member" name="member"><br><br>
+
+        <label for="permiso">Permiso:</label>
+        <select id="permiso" name="permiso" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
+
+        <button type="submit">Enviar</button>
     </form>
+
+    <!-- <form id="dataForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required><br><br>
+
+        <label for="favorite">Favoritos:</label><br>
+        <input type="checkbox" id="favA" name="favorite" value="a">
+        <label for="favA">A</label><br>
+        <input type="checkbox" id="favE" name="favorite" value="e">
+        <label for="favE">E</label><br>
+        <input type="checkbox" id="favI" name="favorite" value="i">
+        <label for="favI">I</label><br><br>
+
+        <label for="member">Miembro:</label>
+        <input type="checkbox" id="member" name="member"><br><br>
+
+        <label for="permiso">Permiso:</label>
+        <select id="permiso" name="permiso" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
+
+        <button type="submit">Enviar</button>
+    </form> -->
 </body>
 
 </html>

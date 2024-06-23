@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('node:path');
 
 // Middleware para analizar cuerpos de solicitud con formato JSON y datos URL codificados para el formulario.
 app.use(express.json());
@@ -12,9 +13,10 @@ const userRoute = require('./routes/user.route');
 const productRoute = require('./routes/product.route');
 
 // Middlewares
-app.use(express.static('public'));
 app.use('/user', userRoute);
 app.use('/product', productRoute);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => {
     console.log(`Servidor en ejecución  http://localhost:${PORT}`);
