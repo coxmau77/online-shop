@@ -42,26 +42,26 @@ const getUserName = (request, response) => { }
 const createUser = (request, response) => {
     // nombre, mail, favorite, member, permiso
     // 'pepe', 'pepe@correo.com', '["a", "e", "i"]', FALSE, 'user'
-    const { nombre, mail, favorite, member, permiso } = request.body;
+    const { nombre, apellido, mail, favorite, member, permiso } = request.body;
 
     // Validación básica de entrada
-    if (!nombre || !mail || !favorite || typeof member === 'undefined' || !permiso) {
+    if (!nombre || !apellido || !mail || !favorite || typeof member === 'undefined' || !permiso) {
         return response.status(400).json({ mensaje: 'Todos los campos son requeridos.' });
     }
 
     // Convertir el campo 'favorite' a JSON
     const favoriteJSON = JSON.stringify(favorite);
 
-    const SQL = 'INSERT INTO usuarios (nombre, mail, favorite, member, permiso) VALUES (?,?,?,?,?)';
+    const SQL = 'INSERT INTO usuarios (nombre, apellido, mail, favorite, member, permiso) VALUES (?,?,?,?,?,?)';
 
-    dataBase.query(SQL, [nombre, mail, favoriteJSON, member, permiso], (error, result) => {
+    dataBase.query(SQL, [nombre, apellido, mail, favoriteJSON, member, permiso], (error, result) => {
 
         if (error) {
             return response.status(500).json({ mensaje: 'Error al crear el usuario', error });
         }
 
         response.json({
-            mensaje: "Usuario creado con éxito",
+            message: "Usuario creado con éxito",
             idUsuario: result.insertId
         });
     });
@@ -84,7 +84,7 @@ const uploadUser = (request, response) => {
         }
 
         response.json({
-            mensaje: "Usuario EDITADO con éxito"
+            message: "Usuario EDITADO con éxito"
         })
 
     });
@@ -101,7 +101,7 @@ const deleteUser = (request, response) => {
         }
 
         response.json({
-            mensaje: "Usuario ELIMINADO con éxito"
+            message: "Confirma el borrado del usuario?"
         })
 
     })
