@@ -26,16 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const li = document.createElement('li');
             li.innerHTML = `
-                <span>ID: ${usuario.id}, nombre: ${usuario.nombre}, apellido: ${usuario.apellido}, mail: ${usuario.mail}</span>
+                <div class="action p-2">
+                    <span>ID: ${usuario.id} | nombre: ${usuario.nombre} | apellido: ${usuario.apellido} | mail:
+                        ${usuario.mail}</span>
+                    <div>
+                        <button class="update btn btn-info" data-id="${usuario.id}" data-nombre="${usuario.nombre}"
+                            data-apellido="${usuario.apellido}" data-mail="${usuario.mail}"><i
+                                class="bi bi-arrow-clockwise"></i>edit</button>
 
-                <div class="action">
-                    <button class="update btn btn-info" data-id="${usuario.id}" data-nombre="${usuario.nombre}"
-                        data-apellido="${usuario.apellido}" data-mail="${usuario.mail}"><i class="bi bi-arrow-clockwise"></i>edit</button>
-
-                    <button class="delete btn btn-danger" data-id="${usuario.id}"><i class="bi bi-trash"></i>delete</button>
+                        <button class="delete btn btn-danger" data-id="${usuario.id}"><i class="bi bi-trash"></i>delete</button>
+                    </div>
                 </div>
             `;
+
             listaDeUsuarios.appendChild(li);
+            // listaDeUsuarios.insertAdjacentHTML('afterbegin', li)
         });
 
         // Actualizar usuario
@@ -108,6 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Actualizar usuario
+        editarUsuarioForm.addEventListener('submit', async event => {
+            event.preventDefault();
 
+            const formData = new FormData(editarUsuarioForm);
+            const id = formData.get('editID');
+
+            const data = {
+                nombre: formData.get('editNombre'),
+                apellido: formData.get('editApellido'),
+                mail: formData.get('editMail'),
+                favorite: formData.getAll('favorite'),
+                member: formData.get('member') !== null,
+                permiso: formData.get('permiso'),
+            };
+
+        });
     }
 });
