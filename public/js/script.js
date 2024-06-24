@@ -75,8 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-
-
     // Listar todos los usuarios
     listarUsuariosBtn.addEventListener('click', listarUsuarios);
 

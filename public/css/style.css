@@ -17,6 +17,10 @@
 } */
 
 .active {
-  background-color: aqua;
-  color: #212529;
+  background-color: #3372e638;
+}
+
+footer {
+  margin-bottom: 6rem;
+  padding: 1rem;
 }
