@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS online_shop;
+CREATE DATABASE IF NOT EXISTS usuarios_db;
+DROP TABLE usuarios;
+DROP TABLE users;
+
+USE usuarios_db;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    mail VARCHAR(100) NOT NULL
+);
+
+SELECT * FROM usuarios

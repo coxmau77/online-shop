@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/coxmau77/online-shop#readme",
   "dependencies": {
-    "express": "4.19.2"
+    "body-parser": "^1.20.2",
+    "express": "4.19.2",
+    "mysql2": "3.10.1"
   }
 }

@@ -7,7 +7,6 @@ router.get('/', userController.getIndex);
 router.get('/all', userController.getAll);
 router.get('/profile', userController.getProfile);
 router.get('/:id', userController.getUserID);
-router.get('/:id', userController.getUserID);
 router.get('/name:nombre', userController.getUserName);
 router.post('/registro', userController.createUser);
 router.put('/:id', userController.uploadUser);

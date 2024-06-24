@@ -7,15 +7,18 @@ const getAll = (request, response) => {
 
     dataBase.query(SQL, (error, result) => {
 
-        if (error) throw error;
-
-
-        if (result.length === 0) {
-            console.log(result.length);
-            response.status(404).send("No existe ningun usuario aun")
-        } else {
-            response.json(result)
+        // if (error) throw error;
+        if (error) {
+            console.error('Error al ejecutar la consulta:', error);
+            return response.status(500).json({ error: 'Error en el servidor' });
         }
+
+        // if (result.length === 0) {
+        //     console.log('No hay usuarios en la lista');
+        //     return response.status(404).json({ mensaje: 'No existe ningún usuario aún' });
+        // }
+
+        response.json(result)
     });
 }
 
@@ -40,48 +43,48 @@ const getUserID = (request, response) => {
 const getUserName = (request, response) => { }
 
 const createUser = (request, response) => {
-    // nombre, mail, favorite, member, permiso
-    // 'pepe', 'pepe@correo.com', '["a", "e", "i"]', FALSE, 'user'
-    const { nombre, apellido, mail, favorite, member, permiso } = request.body;
+
+    const { nombre, apellido, mail } = request.body;
 
     // Validación básica de entrada
-    if (!nombre || !apellido || !mail || !favorite || typeof member === 'undefined' || !permiso) {
-        return response.status(400).json({ mensaje: 'Todos los campos son requeridos.' });
-    }
+    // if (!nombre || !apellido || !mail) {
+    //     return response.status(400).json({ message: 'Todos los campos son requeridos.' });
+    // }
 
-    // Convertir el campo 'favorite' a JSON
-    const favoriteJSON = JSON.stringify(favorite);
+    // // Convertir el campo 'favorite' a JSON
+    // const favoriteJSON = JSON.stringify(favorite);
 
-    const SQL = 'INSERT INTO usuarios (nombre, apellido, mail, favorite, member, permiso) VALUES (?,?,?,?,?,?)';
+    const SQL = 'INSERT INTO usuarios (nombre, apellido, mail) VALUES (?,?,?)';
 
-    dataBase.query(SQL, [nombre, apellido, mail, favoriteJSON, member, permiso], (error, result) => {
+    dataBase.query(SQL, [nombre, apellido, mail], (error, result) => {
 
-        if (error) {
-            return response.status(500).json({ mensaje: 'Error al crear el usuario', error });
-        }
+        if (error) throw error;
+        // if (error) {
+        //     return response.status(500).json({ message: 'Error al crear el usuario', error });
+        // }
 
         response.json({
             message: "Usuario creado con éxito",
             idUsuario: result.insertId
         });
     });
-
 }
 
 const uploadUser = (request, response) => {
     const { id } = request.params;
-    const { mail, favorite } = request.body;
+    const { nombre, apellido, mail } = request.body;
 
-    // Convertir el campo 'favorite' a JSON
-    const favoriteJSON = JSON.stringify(favorite);
+    // // Convertir el campo 'favorite' a JSON
+    // const favoriteJSON = JSON.stringify(favorite);
 
-    const SQL = 'UPDATE usuarios SET mail = ?, favorite = ? WHERE id = ?';
+    const SQL = 'UPDATE usuarios SET nombre = ?, apellido = ?, mail = ? WHERE id = ?';
 
-    dataBase.query(SQL, [mail, favoriteJSON, id], (error, result) => {
+    dataBase.query(SQL, [nombre, apellido, mail, id], (error, result) => {
 
-        if (error) {
-            return response.status(500).json({ mensaje: 'Error al editar el usuario', error });
-        }
+        if (error) throw error;
+        // if (error) {
+        //     return response.status(500).json({ message: 'Error al editar el usuario', error });
+        // }
 
         response.json({
             message: "Usuario EDITADO con éxito"
@@ -96,9 +99,10 @@ const deleteUser = (request, response) => {
 
     dataBase.query(SQL, [id], (error, result) => {
 
-        if (error) {
-            return response.status(500).json({ mensaje: 'Error NO EXISTE el usuario', error });
-        }
+        if (error) throw error;
+        // if (error) {
+        //     return response.status(500).json({ mensaje: 'Error NO EXISTE el usuario', error });
+        // }
 
         response.json({
             message: "Confirma el borrado del usuario?"
