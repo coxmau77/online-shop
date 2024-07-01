@@ -4,7 +4,7 @@ const connection = mySQL.createConnection({
     host: "localhost",
     user: "root",
     password: "admin123",
-    database: "usuarios_db",
+    database: "online_shop",
     port: 3303
 });
 
@@ -16,7 +16,7 @@ connection.connect(error => {
 
     console.log("Conexión a la base de datos exitosa");
 
-    connection.query(`CREATE DATABASE IF NOT EXISTS usuarios_db`, (error, results) => {
+    connection.query(`CREATE DATABASE IF NOT EXISTS online_shop`, (error, results) => {
         if (error) {
             console.log("error creando la base de datos");
             return;
@@ -24,28 +24,44 @@ connection.connect(error => {
 
         console.log("Base de datos asegurada");
 
-        connection.changeUser({ database: 'usuarios_db' }, (error) => {
+        connection.changeUser({ database: 'online_shop' }, (error) => {
             if (error) {
-                console.error("erroror al cambiar a usuarios_db", error);
+                console.error("erroror al cambiar a online_shop", error);
                 return;
             }
 
-            const createTableQuery = `
-                CREATE TABLE IF NOT EXISTS usuarios (
+            const createTableQueryUsers = `
+                CREATE TABLE IF NOT EXISTS users (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     nombre VARCHAR(100) NOT NULL,
                     apellido VARCHAR(100) NOT NULL,
                     mail VARCHAR(255) NOT NULL
-                );            
+                );    
+               
+            `;
+            const createTableQueryProducts = `
+                 CREATE TABLE IF NOT EXISTS products (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    sku VARCHAR(255) NOT NULL,
+                    titulo VARCHAR(100) NOT NULL,
+                    descripcion VARCHAR(255) NOT NULL,
+                    precio INT NOT NULL
+                );
             `;
 
-            connection.query(createTableQuery, (error, results) => {
+            connection.query(createTableQueryUsers, (error, results) => {
                 if (error) {
                     console.log("error creando la tabla: ", error);
                     return;
                 }
+                console.log("Tabla asegurada");
+            });
 
-
+            connection.query(createTableQueryProducts, (error, results) => {
+                if (error) {
+                    console.log("error creando la tabla: ", error);
+                    return;
+                }
                 console.log("Tabla asegurada");
             });
         });

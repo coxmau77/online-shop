@@ -13,3 +13,12 @@ pass: Onlineshop@123 (This password will be used for default users (FTP, MySQL, 
 
 Deploy
 https://www.youtube.com/watch?v=qsOmdrgm0qg&list=PLCL4VN3IMxOTqBIvTV191gTdIjt5Ym73n&index=1
+
+
+# Multer
+
+para subir documentos y guardarlos en un directorio
+
+``npm i multer``
+
+Requerir multer

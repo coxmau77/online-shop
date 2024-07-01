@@ -46,294 +46,90 @@
 
             <div class="text-primary fs-4">
                 <i class="dark-mode mx-2 bi bi-lightbulb-fill"></i>
-                <i class="add-product mx-2 bi bi-plus-circle-fill"></i>
+                <i class="add-product mx-2 bi bi-plus-circle-fill text-success" data-bs-toggle="modal"
+                    data-bs-target="#addProduct"></i>
                 <!-- open modal para agegar un producto -->
             </div>
-
         </div>
     </section>
+    <!-- Modal add product-->
+    <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <i class="bi bi-plus-circle-fill text-success"></i>
+                        Agregar producto
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form para crear producto -->
+                    <form id="crearProductoForm" class="" enctype="multipart/form-data">
+                        <!-- <form id="crearUsuarioForm" class="hidden"> -->
 
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título del producto</label>
+                            <input type="text" name="titulo" class="form-control" id="titulo"
+                                aria-describedby="tituloHelp" placeholder="Ej: Escritorio para oficina" required>
+                            <div id="tituloHelp" class="form-text">Ingresa el título del producto.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="sku" class="form-label">SKU del producto</label>
+                            <input type="text" name="sku" class="form-control" id="sku" aria-describedby="skuHelp"
+                                placeholder="Ej: XYZ-01234" required>
+                            <div id="skuHelp" class="form-text">Código de identificación único de tu producto.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción del producto</label>
+                            <textarea name="descripcion" class="form-control" id="descripcion" rows="3"
+                                placeholder="Has una breve descripción del producto a crear."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio del producto</label>
+                            <input type="number" name="precio" class="form-control" id="precio"
+                                aria-describedby="precioHelp" placeholder="Ej: 1999" required>
+                            <div id="precioHelp" class="form-text">Ingresa el precio del producto.</div>
+                        </div>
+
+
+                        <!-- <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required><br><br>
+
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" required><br><br>
+
+                        <label for="mail">Email:</label>
+                        <input type="email" id="mail" name="mail" required><br><br>
+
+                        <label for="archivo">Archivos:</label>
+                        <input type="file" id="archivo" name="archivo"><br><br> -->
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success m-3">
+                                Agregar producto
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
 
     <main class="py-2 container mt-5">
 
         <h1 class="fs-1">main content Shop</h1>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
-
-            <div class="col">
-
-                <div class="card shadow-sm" data-bs-toggle="modal" data-bs-target="#id_product_01">
-                    <!-- Imagen principal -->
-                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                        class="card-img-top mx-auto d-block">
-
-                    <div class="card-body">
-
-                        <h3 class="my-2 modal-title" id="exampleModalLabel">Titulo producto #01</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-                            adipisci!</p>
-
-                        <div class="d-flex justify-content-center align-items-center">
-                            <h1 class="card-title pricing-card-title">
-                                <small class="text-muted fw-light">AR$</small>
-                                1.999,99
-                            </h1>
-                        </div>
-                        <div class="d-flex justify-content-end align-items-center pt-2">
-                            <!-- <small class="text-body-secondary">9 mins</small> -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-primary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="id_product_01" data-bs-backdrop="static" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-
-                            <div class="modal-body row">
-                                <div class="col-12 col-md-5">
-                                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                                        class="card-img-top mx-auto d-block rounded">
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="col p-4 d-flex flex-column position-static">
-
-                                        <!-- Editar / Eliminar -->
-                                        <div class="my-2 d-flex justify-content-end">
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Editar
-                                            </a>
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Eliminar
-                                            </a>
-                                        </div>
-
-                                        <h3 class="my-2 modal-title" id="exampleModalLabel">
-                                            Titulo producto #01
-                                            <span class="badge bg-primary bg-primary">Nuevo</span>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-                                            quia ab vel voluptatem hic ipsam minima praesentium voluptates
-                                            reiciendis in?
-                                        </p>
-                                        <h1 class="card-title pricing-card-title">
-                                            <small class="text-muted fw-light">AR$</small>
-                                            1.999,99
-                                        </h1>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary my-2 w-50 rounded-pill"
-                                    data-bs-dismiss="modal">
-                                    <i class="bi bi-cart-plus-fill"></i>
-                                    Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-
-                <div class="card shadow-sm" data-bs-toggle="modal" data-bs-target="#id_product_01">
-                    <!-- Imagen principal -->
-                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                        class="card-img-top mx-auto d-block">
-
-                    <div class="card-body">
-
-                        <h3 class="my-2 modal-title" id="exampleModalLabel">Titulo producto #01</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-                            adipisci!</p>
-
-                        <div class="d-flex justify-content-center align-items-center">
-                            <h1 class="card-title pricing-card-title">
-                                <small class="text-muted fw-light">AR$</small>
-                                1.999,99
-                            </h1>
-                        </div>
-                        <div class="d-flex justify-content-end align-items-center pt-2">
-                            <!-- <small class="text-body-secondary">9 mins</small> -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-primary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="id_product_01" data-bs-backdrop="static" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-
-                            <div class="modal-body row">
-                                <div class="col-12 col-md-5">
-                                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                                        class="card-img-top mx-auto d-block rounded">
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="col p-4 d-flex flex-column position-static">
-
-                                        <!-- Editar / Eliminar -->
-                                        <div class="my-2 d-flex justify-content-end">
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Editar
-                                            </a>
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Eliminar
-                                            </a>
-                                        </div>
-
-                                        <h3 class="my-2 modal-title" id="exampleModalLabel">
-                                            Titulo producto #01
-                                            <span class="badge bg-primary bg-primary">Nuevo</span>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-                                            quia ab vel voluptatem hic ipsam minima praesentium voluptates
-                                            reiciendis in?
-                                        </p>
-                                        <h1 class="card-title pricing-card-title">
-                                            <small class="text-muted fw-light">AR$</small>
-                                            1.999,99
-                                        </h1>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary my-2 w-50 rounded-pill"
-                                    data-bs-dismiss="modal">
-                                    <i class="bi bi-cart-plus-fill"></i>
-                                    Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-
-                <div class="card shadow-sm" data-bs-toggle="modal" data-bs-target="#id_product_01">
-                    <!-- Imagen principal -->
-                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                        class="card-img-top mx-auto d-block">
-
-                    <div class="card-body">
-
-                        <h3 class="my-2 modal-title" id="exampleModalLabel">Titulo producto #01</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-                            adipisci!</p>
-
-                        <div class="d-flex justify-content-center align-items-center">
-                            <h1 class="card-title pricing-card-title">
-                                <small class="text-muted fw-light">AR$</small>
-                                1.999,99
-                            </h1>
-                        </div>
-                        <div class="d-flex justify-content-end align-items-center pt-2">
-                            <!-- <small class="text-body-secondary">9 mins</small> -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-primary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="id_product_01" data-bs-backdrop="static" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-
-                            <div class="modal-body row">
-                                <div class="col-12 col-md-5">
-                                    <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
-                                        class="card-img-top mx-auto d-block rounded">
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="col p-4 d-flex flex-column position-static">
-
-                                        <!-- Editar / Eliminar -->
-                                        <div class="my-2 d-flex justify-content-end">
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Editar
-                                            </a>
-                                            <a href="#"
-                                                class="badge rounded-pill bg-secondary py-2 px-3 text-light bg-opacity-25">
-                                                Eliminar
-                                            </a>
-                                        </div>
-
-                                        <h3 class="my-2 modal-title" id="exampleModalLabel">
-                                            Titulo producto #01
-                                            <span class="badge bg-primary bg-primary">Nuevo</span>
-                                        </h3>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore
-                                            quia ab vel voluptatem hic ipsam minima praesentium voluptates
-                                            reiciendis in?
-                                        </p>
-                                        <h1 class="card-title pricing-card-title">
-                                            <small class="text-muted fw-light">AR$</small>
-                                            1.999,99
-                                        </h1>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary my-2 w-50 rounded-pill"
-                                    data-bs-dismiss="modal">
-                                    <i class="bi bi-cart-plus-fill"></i>
-                                    Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div id="product_list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
         </div>
 
     </main>

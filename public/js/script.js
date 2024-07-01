@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const response = await fetch('/user/all');
 
-        // Manejo de errores HTTP
+        // Manejo de errores HTTP 
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.error || errorData.mensaje || 'Error al obtener los usuarios');
@@ -137,10 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
 
-                alert(result.message);
+                // alert(result.message);
+                confirm(result.message)
                 listarUsuarios();
             });
         });
 
     }
+
+    listarUsuarios();
 });
