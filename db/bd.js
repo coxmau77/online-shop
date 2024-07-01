@@ -22,7 +22,7 @@ connection.connect(error => {
             return;
         }
 
-        console.log("Base de datos asegurada");
+        console.log("Base de datos verificada");
 
         connection.changeUser({ database: 'online_shop' }, (error) => {
             if (error) {
@@ -39,6 +39,7 @@ connection.connect(error => {
                 );    
                
             `;
+
             const createTableQueryProducts = `
                  CREATE TABLE IF NOT EXISTS products (
                     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +55,7 @@ connection.connect(error => {
                     console.log("error creando la tabla: ", error);
                     return;
                 }
-                console.log("Tabla asegurada");
+                console.log("Tabla users lista para usar");
             });
 
             connection.query(createTableQueryProducts, (error, results) => {
@@ -62,7 +63,7 @@ connection.connect(error => {
                     console.log("error creando la tabla: ", error);
                     return;
                 }
-                console.log("Tabla asegurada");
+                console.log("Tabla products lista para usar");
             });
         });
     });
