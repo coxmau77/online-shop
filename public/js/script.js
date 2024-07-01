@@ -97,8 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="action p-2">
                 <span>ID: ${usuario.id} | nombre: ${usuario.nombre} | apellido: ${usuario.apellido} | mail: ${usuario.mail}</span>
                 <div>
-                    <button class="update btn btn-info" data-id="${usuario.id}" data-nombre="${usuario.nombre}" data-apellido="${usuario.apellido}" data-mail="${usuario.mail}">Actualizar</button>
-                    <button class="delete btn btn-danger" data-id="${usuario.id}">Eliminar</button>
+
+                <button class="delete btn btn-danger" data-id="${usuario.id}">Eliminar</button>
+                
+                <button class="update btn btn-info" data-id="${usuario.id}" data-nombre="${usuario.nombre}" data-apellido="${usuario.apellido}" data-mail="${usuario.mail}">Actualizar</button>
+
                 </div>
             </div>
             `;

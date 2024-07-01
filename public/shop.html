@@ -66,28 +66,27 @@
                 <div class="modal-body">
                     <!-- Form para crear producto -->
                     <form id="crearProductoForm" class="" enctype="multipart/form-data">
-                        <!-- <form id="crearUsuarioForm" class="hidden"> -->
-
-                        <div class="mb-3">
-                            <label for="titulo" class="form-label">Título del producto</label>
-                            <input type="text" name="titulo" class="form-control" id="titulo"
-                                aria-describedby="tituloHelp" placeholder="Ej: Escritorio para oficina" required>
-                            <div id="tituloHelp" class="form-text">Ingresa el título del producto.</div>
-                        </div>
-
+                        <!-- SKU -->
                         <div class="mb-3">
                             <label for="sku" class="form-label">SKU del producto</label>
                             <input type="text" name="sku" class="form-control" id="sku" aria-describedby="skuHelp"
                                 placeholder="Ej: XYZ-01234" required>
                             <div id="skuHelp" class="form-text">Código de identificación único de tu producto.</div>
                         </div>
-
+                        <!-- Titulo -->
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título del producto</label>
+                            <input type="text" name="titulo" class="form-control" id="titulo"
+                                aria-describedby="tituloHelp" placeholder="Ej: Escritorio para oficina" required>
+                            <div id="tituloHelp" class="form-text">Ingresa el título del producto.</div>
+                        </div>
+                        <!-- Descripción -->
                         <div class="mb-3">
                             <label for="descripcion" class="form-label">Descripción del producto</label>
                             <textarea name="descripcion" class="form-control" id="descripcion" rows="3"
-                                placeholder="Has una breve descripción del producto a crear."></textarea>
+                                placeholder="Has una breve descripción del producto a crear." required></textarea>
                         </div>
-
+                        <!-- Precio -->
                         <div class="mb-3">
                             <label for="precio" class="form-label">Precio del producto</label>
                             <input type="number" name="precio" class="form-control" id="precio"
@@ -95,26 +94,11 @@
                             <div id="precioHelp" class="form-text">Ingresa el precio del producto.</div>
                         </div>
 
-
-                        <!-- <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required><br><br>
-
-                        <label for="apellido">Apellido:</label>
-                        <input type="text" id="apellido" name="apellido" required><br><br>
-
-                        <label for="mail">Email:</label>
-                        <input type="email" id="mail" name="mail" required><br><br>
-
-                        <label for="archivo">Archivos:</label>
-                        <input type="file" id="archivo" name="archivo"><br><br> -->
-
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success m-3">
+                            <button type="submit" class="btn btn-success m-3" data-bs-dismiss="modal">
                                 Agregar producto
                             </button>
                         </div>
-
-
                     </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -130,6 +114,69 @@
         <h1 class="fs-1">main content Shop</h1>
 
         <div id="product_list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
+        </div>
+
+        <!-- Modal edit product-->
+        <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                            <i class="bi bi-pencil-fill text-primary me-3"></i>
+                            Editar producto
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form para editar producto -->
+                        <form id="editarProductoForm" class="">
+                            <input type="hidden" id="editID" name="editID">
+
+                            <div class="mb-3">
+                                <div class="spinner-border spinner-border-sm text-primary me-3" role="status">
+                                </div>
+                                <label for="editTitulo" class="form-label">Editar título del producto</label>
+                                <input type="text" name="editTitulo" class="form-control" id="editTitulo">
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="spinner-border spinner-border-sm text-primary me-3" role="status">
+                                </div>
+                                <label for="editSku" class="form-label">Editar SKU del producto</label>
+                                <input type="text" name="editSku" class="form-control" id="editSku">
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="spinner-border spinner-border-sm text-primary me-3" role="status">
+                                </div>
+                                <label for="editDescripcion" class="form-label">Editar descripción del producto</label>
+                                <textarea name="editDescripcion" class="form-control" id="editDescripcion"
+                                    rows="3"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="spinner-border spinner-border-sm text-primary me-3" role="status">
+                                </div>
+                                <label for="editPrecio" class="form-label">Edita precio del producto</label>
+                                <input type="text" name="editPrecio" class="form-control" id="editPrecio">
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button id="editarProductoForm" type="submit" class="btn btn-primary m-3"
+                                    data-bs-dismiss="modal">
+                                    Actualizar producto
+                                </button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                </div>
+            </div>
         </div>
 
     </main>
