@@ -54,7 +54,7 @@ const createUser = (request, response) => {
     // // Convertir el campo 'favorite' a JSON
     // const favoriteJSON = JSON.stringify(favorite);
 
-    const SQL = 'INSERT INTO usuarios (nombre, apellido, mail) VALUES (?,?,?)';
+    const SQL = 'INSERT INTO users (nombre, apellido, mail) VALUES (?,?,?)';
 
     dataBase.query(SQL, [nombre, apellido, mail], (error, result) => {
 
