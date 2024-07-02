@@ -19,13 +19,20 @@ body {
   margin-top: 4rem;
 }
 
-.active {
+.active-link {
   background-color: #3372e6;
+  padding: .6rem;
+  border-radius: 100vw;
+
 
   a {
-
     color: white;
+    padding: 0;
   }
+}
+
+.btn {
+  border-radius: 100vw;
 }
 
 footer {

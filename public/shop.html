@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./js/darkmode.js"></script>
 
+    <style>
+        .add-product {
+            animation: giro360 1s linear infinite;
+            animation-delay: 5s;
+            transition: all;
+        }
+    </style>
 </head>
 
 <body>
@@ -91,11 +98,13 @@
 
     <main class="py-2 container mt-5">
 
-        <h1 id="greeting" class="fs-1"></h1>
-        <button id="logoutBtn" class="rounded-pill bg-danger-subtle text-danger-emphasis btn">
-            <i class="bi bi-person-fill-x"></i>
-            Cerrar Sesión
-        </button>
+        <div class="m-5">
+            <h1 id="greeting" class="fs-1"></h1>
+            <button id="logoutBtn" class="rounded-pill bg-danger-subtle text-danger-emphasis btn">
+                <i class="bi bi-person-fill-x"></i>
+                Cerrar Sesión
+            </button>
+        </div>
 
         <div id="product_list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
         </div>
@@ -241,7 +250,7 @@
                                 <span>Log in</span>
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active-link">
                             <a class="nav-link" href="./shop.html">
                                 <i class="bi bi-fire"></i>
                                 <span>Shop</span>
