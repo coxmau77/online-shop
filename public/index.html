@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-AR" data-bs-theme="dark">
+<html lang="es-AR">
 
 <head>
     <meta charset="UTF-8">
@@ -11,117 +11,25 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- my style -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWWE3L9BK4"></script> -->
-    <!-- <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-FWWE3L9BK4');
-    </script> -->
-
-    <style>
-        .shop-list {
-            display: flex;
-            background-color: pink;
-            list-style: none;
-        }
-
-        body {
-            margin-top: 4rem;
-        }
-
-        .list-group {
-            width: 100%;
-            max-width: 460px;
-            margin-inline: 1.5rem;
-        }
-
-        .form-check-input:checked+.form-checked-content {
-            opacity: .5;
-        }
-
-        .form-check-input-placeholder {
-            border-style: dashed;
-        }
-
-        [contenteditable]:focus {
-            outline: 0;
-        }
-
-        .list-group-checkable .list-group-item {
-            cursor: pointer;
-        }
-
-        .list-group-item-check {
-            position: absolute;
-            clip: rect(0, 0, 0, 0);
-        }
-
-        .list-group-item-check:hover+.list-group-item {
-            background-color: var(--bs-secondary-bg);
-        }
-
-        .list-group-item-check:checked+.list-group-item {
-            color: #fff;
-            background-color: var(--bs-primary);
-            border-color: var(--bs-primary);
-        }
-
-        .list-group-item-check[disabled]+.list-group-item,
-        .list-group-item-check:disabled+.list-group-item {
-            pointer-events: none;
-            filter: none;
-            opacity: .5;
-        }
-
-        .list-group-radio .list-group-item {
-            cursor: pointer;
-            border-radius: .5rem;
-        }
-
-        .list-group-radio .form-check-input {
-            z-index: 2;
-            margin-top: -.5em;
-        }
-
-        .list-group-radio .list-group-item:hover,
-        .list-group-radio .list-group-item:focus {
-            background-color: var(--bs-secondary-bg);
-        }
-
-        .list-group-radio .form-check-input:checked+.list-group-item {
-            background-color: var(--bs-body);
-            border-color: var(--bs-primary);
-            box-shadow: 0 0 0 2px var(--bs-primary);
-        }
-
-        .list-group-radio .form-check-input[disabled]+.list-group-item,
-        .list-group-radio .form-check-input:disabled+.list-group-item {
-            pointer-events: none;
-            filter: none;
-            opacity: .5;
-        }
-    </style>
-
+    <script defer src="./js/darkmode.js"></script>
 </head>
 
 <body>
     <section class=" p-3 fixed-top bg-body-tertiary">
         <div class="container d-flex justify-content-end">
-            <!-- <div>
-                <a href="./index.html">index</a>
-                <a href="./form.html">form</a>
-                <a href="add-product.html">add product</a>
-            </div> -->
-
             <div class="text-primary fs-4">
                 <i class="dark-mode mx-2 bi bi-lightbulb-fill"></i>
             </div>
-
         </div>
     </section>
+
+    <div class="container m-5">
+        <h1 id="greeting" class="fs-1"></h1>
+        <button id="logoutBtn" class="rounded-pill bg-danger-subtle text-danger-emphasis btn">
+            <i class="bi bi-person-fill-x"></i>
+            Cerrar Sesión
+        </button>
+    </div>
 
     <header class="container">
         <div id=" carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -170,8 +78,6 @@
     </header>
 
     <main class="py-2 container mt-5">
-
-        <h1 class="fs-1">main content Shop</h1>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
 
@@ -539,7 +445,7 @@
                 </div>
 
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-between  align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <svg class="bi" width="24" height="24">
@@ -596,26 +502,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- My script -->
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const darkModeBtn = document.querySelector('.dark-mode');
-            const html = document.querySelector('html');
-
-            darkModeBtn.addEventListener('click', () => {
-                // Toggle para quitar o agregar el valor 'dark'
-                if (html.getAttribute('data-bs-theme') === 'dark') {
-                    html.removeAttribute('data-bs-theme');
-                    console.log('Modo oscuro desactivado');
-                } else {
-                    html.setAttribute('data-bs-theme', 'dark');
-                    console.log('Modo oscuro activado');
-                }
-            });
-        });
-
-    </script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

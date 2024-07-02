@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-AR" data-bs-theme="dark">
+<html lang="es-AR">
 
 <head>
     <meta charset="UTF-8">
@@ -11,74 +11,55 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- my style -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWWE3L9BK4"></script> -->
-    <!-- <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-FWWE3L9BK4');
-    </script> -->
-
-    <style>
-        .shop-list {
-            display: flex;
-            background-color: pink;
-            list-style: none;
-        }
-
-        body {
-            margin-top: 4rem;
-        }
-    </style>
-
+    <script defer src="./js/darkmode.js"></script>
 </head>
 
 <body>
     <section class=" p-3 fixed-top bg-body-tertiary">
         <div class="container d-flex justify-content-end">
-            <!-- <div>
-                <a href="./index.html">index</a>
-                <a href="./form.html">form</a>
-                <a href="add-product.html">add product</a>
-            </div> -->
-
             <div class="text-primary fs-4">
                 <i class="dark-mode mx-2 bi bi-lightbulb-fill"></i>
             </div>
-
         </div>
     </section>
 
+
+
     <main class="py-2 container mt-5">
 
-        <h1 class="fs-1 m-4">
-            <i class="bi bi-envelope-at-fill"></i>
-            Contacto
-        </h1>
+        <div class="container text-center">
+            <h1 class="fs-1 mt-5">Contacto</h1>
+            <p>Envía tu mensaje que con gusto responderemos tus consultas.</p>
+        </div>
+
         <form data-form>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ej: José María" autofocus
+                    required>
             </div>
+
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="mail" class="form-control" id="email" placeholder="Ej: tu-email@correo.com"
+                    required>
             </div>
-            <div class="mb-3 form-check">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+
+            <div class="mb-3">
+                <label for="editDescripcion" class="form-label">Redacta tu mensaje aquí</label>
+                <textarea name="editDescripcion" class="form-control" id="editDescripcion" rows="3"
+                    placeholder="Desja tu comentario o consulta" required></textarea>
             </div>
+
+
             <div class="container text-end">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Enviar mensaje ahora</button>
             </div>
         </form>
 
     </main>
 
-    <footer class="container d-flex flex-wrap justify-content-between align-items-center mb-2 border-top">
+    <footer class="container d-flex flex-wrap justify-content-between align-items-center border-top">
         <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24">
@@ -122,7 +103,7 @@
                 </div>
 
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-between align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <svg class="bi" width="24" height="24">
@@ -179,26 +160,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- My script -->
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const darkModeBtn = document.querySelector('.dark-mode');
-            const html = document.querySelector('html');
-
-            darkModeBtn.addEventListener('click', () => {
-                // Toggle para quitar o agregar el valor 'dark'
-                if (html.getAttribute('data-bs-theme') === 'dark') {
-                    html.removeAttribute('data-bs-theme');
-                    console.log('Modo oscuro desactivado');
-                } else {
-                    html.setAttribute('data-bs-theme', 'dark');
-                    console.log('Modo oscuro activado');
-                }
-            });
-        });
-
-    </script>
 </body>
 
 </html>

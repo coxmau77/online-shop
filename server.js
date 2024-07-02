@@ -11,10 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 // Router
 const userRoute = require('./routes/user.route');
 const productRoute = require('./routes/product.route');
+const loginRoutes = require('./routes/login.routes');
 
 // Middlewares
 app.use('/user', userRoute);
 app.use('/product', productRoute);
+app.use('/api', loginRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

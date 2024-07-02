@@ -1,7 +1,13 @@
+// /controller/product.controller.js
 const dataBase = require('../db/bd');
 
 const createProduct = (request, response) => {
     const { sku, titulo, descripcion, precio } = request.body;
+
+    // Validación de los datos del producto
+    if (!sku || !titulo || !descripcion || !precio) {
+        return response.status(400).json({ message: "Todos los campos son obligatorios" });
+    }
     const SQL = 'INSERT INTO products (sku,titulo,descripcion,precio) VALUES (?,?,?,?)';
 
     dataBase.query(SQL, [sku, titulo, descripcion, precio], (error, result) => {

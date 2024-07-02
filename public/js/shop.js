@@ -18,6 +18,13 @@ crearProductoForm.addEventListener('submit', async event => {
         precio: formData.get('precio')
     };
 
+    // const data = {
+    //     sku: formData.get('sku'),
+    //     titulo: formData.get('titulo'),
+    //     descripcion: formData.get('descripcion'),
+    //     precio: parseFloat(formData.get('precio')) // Convertir a número, sugerido para almacenar el tipo de dato
+    // };
+
     // console.log(data)
 
     // Enviar la data al backend
@@ -30,9 +37,7 @@ crearProductoForm.addEventListener('submit', async event => {
     });
 
     const result = await response.json();
-    crearProductoForm.reset();
     listarProductos();
-    alert(result.message)
 
 });
 
