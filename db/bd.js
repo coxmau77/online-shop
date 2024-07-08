@@ -1,11 +1,21 @@
+require('dotenv').config();
 const mySQL = require('mysql2');
 
+// Conexion local
+// const connection = mySQL.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "admin123",
+//     database: "online_shop",
+//     port: 3303
+// });
+// Conexion para deploy
 const connection = mySQL.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "admin123",
-    database: "online_shop",
-    port: 3303
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_HOST
 });
 
 connection.connect(error => {
@@ -26,7 +36,7 @@ connection.connect(error => {
 
         connection.changeUser({ database: 'online_shop' }, (error) => {
             if (error) {
-                console.error("erroror al cambiar a online_shop", error);
+                console.error("error al cambiar a online_shop", error);
                 return;
             }
 
