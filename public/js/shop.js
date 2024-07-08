@@ -1,6 +1,6 @@
-console.log("Aqui vemos y agregamos productos");
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Aqui vemos y agregamos productos");
 
     const listaDeProductos = document.getElementById('product_list');
     const editarProductoForm = document.getElementById('editarProductoForm');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listar todos los productos
     async function listarProductos() {
 
-        const response = await fetch('product/all');
+        const response = await fetch('/product/all');
 
         // Manejo de errores HTTP
         if (!response.ok) {
