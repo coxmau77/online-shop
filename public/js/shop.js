@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Aqui vemos y agregamos productos >");
 
