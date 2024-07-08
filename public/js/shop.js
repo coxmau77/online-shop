@@ -1,66 +1,67 @@
 console.log("Aqui vemos y agregamos productos");
 
-const listaDeProductos = document.getElementById('product_list');
-const editarProductoForm = document.getElementById('editarProductoForm');
-const crearProductoForm = document.getElementById('crearProductoForm');
+document.addEventListener('DOMContentLoaded', () => {
+    const listaDeProductos = document.getElementById('product_list');
+    const editarProductoForm = document.getElementById('editarProductoForm');
+    const crearProductoForm = document.getElementById('crearProductoForm');
 
-// Crear producto
-crearProductoForm.addEventListener('submit', async event => {
-    event.preventDefault();
+    // Crear producto
+    crearProductoForm.addEventListener('submit', async event => {
+        event.preventDefault();
 
-    const formData = new FormData(crearProductoForm);
+        const formData = new FormData(crearProductoForm);
 
-    // sku, titulo, descripcion, precio
-    const data = {
-        sku: formData.get('sku'),
-        titulo: formData.get('titulo'),
-        descripcion: formData.get('descripcion'),
-        precio: formData.get('precio')
-    };
+        // sku, titulo, descripcion, precio
+        const data = {
+            sku: formData.get('sku'),
+            titulo: formData.get('titulo'),
+            descripcion: formData.get('descripcion'),
+            precio: formData.get('precio')
+        };
 
-    // const data = {
-    //     sku: formData.get('sku'),
-    //     titulo: formData.get('titulo'),
-    //     descripcion: formData.get('descripcion'),
-    //     precio: parseFloat(formData.get('precio')) // Convertir a número, sugerido para almacenar el tipo de dato
-    // };
+        // const data = {
+        //     sku: formData.get('sku'),
+        //     titulo: formData.get('titulo'),
+        //     descripcion: formData.get('descripcion'),
+        //     precio: parseFloat(formData.get('precio')) // Convertir a número, sugerido para almacenar el tipo de dato
+        // };
 
-    // console.log(data)
+        // console.log(data)
 
-    // Enviar la data al backend
-    const response = await fetch('product/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        // Enviar la data al backend
+        const response = await fetch('product/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        listarProductos();
+
     });
 
-    const result = await response.json();
-    listarProductos();
+    // Listar todos los productos
+    async function listarProductos() {
 
-});
+        const response = await fetch('product/all');
 
-// Listar todos los productos
-async function listarProductos() {
+        // Manejo de errores HTTP
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || errorData.mensaje || 'Error al obtener los usuarios');
+        }
 
-    const response = await fetch('product/all');
+        const productos = await response.json();
 
-    // Manejo de errores HTTP
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || errorData.mensaje || 'Error al obtener los usuarios');
-    }
+        listaDeProductos.innerHTML = '';
 
-    const productos = await response.json();
+        productos.forEach(producto => {
+            const col = document.createElement('div');
+            col.classList.add('col');
 
-    listaDeProductos.innerHTML = '';
-
-    productos.forEach(producto => {
-        const col = document.createElement('div');
-        col.classList.add('col');
-
-        let structure = `
+            let structure = `
         <div class="card shadow-sm">
                     <!-- Imagen principal -->
                     <img src="./images/web-images/image_placeholader.png" alt="..." width="100%"
@@ -136,79 +137,82 @@ async function listarProductos() {
                 </div>
         `
 
-        col.innerHTML = structure;
+            col.innerHTML = structure;
 
-        listaDeProductos.appendChild(col);
-        // listaDeProductos.insertAdjacentHTML('afterbegin', col.innerHTML);
-        // listaDeProductos.insertAdjacentHTML('beforeend', col.innerHTML);
-    });
-
-    // Actualizar Producto
-    document.querySelectorAll('.update').forEach(button => {
-        button.addEventListener('click', event => {
-
-            console.log("click update");
-
-            const id = event.target.getAttribute('data-id');
-            const sku = event.target.getAttribute('data-sku');
-            const titulo = event.target.getAttribute('data-titulo');
-            const descripcion = event.target.getAttribute('data-descripcion');
-            const precio = event.target.getAttribute('data-precio');
-
-            document.getElementById('editID').value = id;
-            document.getElementById('editSku').value = sku;
-            document.getElementById('editTitulo').value = titulo;
-            document.getElementById('editDescripcion').value = descripcion;
-            document.getElementById('editPrecio').value = precio;
+            listaDeProductos.appendChild(col);
+            // listaDeProductos.insertAdjacentHTML('afterbegin', col.innerHTML);
+            // listaDeProductos.insertAdjacentHTML('beforeend', col.innerHTML);
         });
-    });
 
-    // Eliminar usuario
-    document.querySelectorAll('.delete').forEach(button => {
-        button.addEventListener('click', async event => {
+        // Actualizar Producto
+        document.querySelectorAll('.update').forEach(button => {
+            button.addEventListener('click', event => {
 
-            console.log("click en delete");
+                console.log("click update");
 
-            const id = event.target.getAttribute('data-id');
+                const id = event.target.getAttribute('data-id');
+                const sku = event.target.getAttribute('data-sku');
+                const titulo = event.target.getAttribute('data-titulo');
+                const descripcion = event.target.getAttribute('data-descripcion');
+                const precio = event.target.getAttribute('data-precio');
 
-            const response = await fetch(`/product/${id}`, {
-                method: 'DELETE'
+                document.getElementById('editID').value = id;
+                document.getElementById('editSku').value = sku;
+                document.getElementById('editTitulo').value = titulo;
+                document.getElementById('editDescripcion').value = descripcion;
+                document.getElementById('editPrecio').value = precio;
             });
-
-            const result = await response.json();
-
-            listarProductos();
-            // confirm(result.message);
-            alert(result.message);
         });
+
+        // Eliminar usuario
+        document.querySelectorAll('.delete').forEach(button => {
+            button.addEventListener('click', async event => {
+
+                console.log("click en delete");
+
+                const id = event.target.getAttribute('data-id');
+
+                const response = await fetch(`/product/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                listarProductos();
+                // confirm(result.message);
+                alert(result.message);
+            });
+        });
+    }
+
+    // Actualizar producto
+    editarProductoForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const formData = new FormData(editarProductoForm);
+        const id = formData.get('editID');
+
+        const data = {
+            titulo: formData.get('editTitulo'),
+            sku: formData.get('editSku'),
+            descripcion: formData.get('editDescripcion'),
+            precio: formData.get('editPrecio')
+        };
+
+        const response = await fetch(`product/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        editarProductoForm.reset();
+        listarProductos();
+        alert(result.message);
     });
-}
 
-// Actualizar producto
-editarProductoForm.addEventListener('submit', async event => {
-    event.preventDefault();
-    const formData = new FormData(editarProductoForm);
-    const id = formData.get('editID');
-
-    const data = {
-        titulo: formData.get('editTitulo'),
-        sku: formData.get('editSku'),
-        descripcion: formData.get('editDescripcion'),
-        precio: formData.get('editPrecio')
-    };
-
-    const response = await fetch(`product/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-    editarProductoForm.reset();
     listarProductos();
-    alert(result.message);
 });
 
-listarProductos();
+
