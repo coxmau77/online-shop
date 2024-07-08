@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Aqui vemos y agregamos productos");
+    console.log("Aqui vemos y agregamos productos >");
 
     const listaDeProductos = document.getElementById('product_list');
     const editarProductoForm = document.getElementById('editarProductoForm');
