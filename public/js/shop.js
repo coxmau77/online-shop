@@ -44,13 +44,13 @@ crearProductoForm.addEventListener('submit', async event => {
 // Listar todos los productos
 async function listarProductos() {
 
-    const response = await fetch('/product/all');
+    const response = await fetch('product/all');
 
-    // // Manejo de errores HTTP
-    // if (!response.ok) {
-    //     const errorData = await response.json();
-    //     throw new Error(errorData.error || errorData.mensaje || 'Error al obtener los usuarios');
-    // }
+    // Manejo de errores HTTP
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || errorData.mensaje || 'Error al obtener los usuarios');
+    }
 
     const productos = await response.json();
 
