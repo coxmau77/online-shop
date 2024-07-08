@@ -51,17 +51,14 @@ const createUser = (request, response) => {
     //     return response.status(400).json({ message: 'Todos los campos son requeridos.' });
     // }
 
-    // // Convertir el campo 'favorite' a JSON
-    // const favoriteJSON = JSON.stringify(favorite);
-
     const SQL = 'INSERT INTO users (nombre, apellido, mail) VALUES (?,?,?)';
 
     dataBase.query(SQL, [nombre, apellido, mail], (error, result) => {
 
-        if (error) throw error;
-        // if (error) {
-        //     return response.status(500).json({ message: 'Error al crear el usuario', error });
-        // }
+        // if (error) throw error;
+        if (error) {
+            return response.status(500).json({ message: 'Error al crear el usuario', error });
+        }
 
         response.json({
             message: "Usuario creado con éxito",
