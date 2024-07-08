@@ -1,6 +1,7 @@
 console.log("Aqui vemos y agregamos productos");
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const listaDeProductos = document.getElementById('product_list');
     const editarProductoForm = document.getElementById('editarProductoForm');
     const crearProductoForm = document.getElementById('crearProductoForm');

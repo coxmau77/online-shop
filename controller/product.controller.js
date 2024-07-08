@@ -73,3 +73,5 @@ const uploadProduct = (request, response) => {
 };
 
 module.exports = { getAll, deleteProduct, uploadProduct, createProduct }
+
+
