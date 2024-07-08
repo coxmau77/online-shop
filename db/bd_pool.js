@@ -14,19 +14,19 @@ const localConfig = {
     queueLimit: 0
 };
 
-// Configuración de la conexión para despliegue
-const deployConfig = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-};
+// // Configuración de la conexión para despliegue
+// const deployConfig = {
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+//     port: process.env.DB_PORT,
+//     waitForConnections: true,
+//     connectionLimit: 10,
+//     queueLimit: 0
+// };
 
-// Seleccionar la configuración correcta (local o despliegue)
+// Seleccionar la configuración correcta (local o despliegue) // local : production
 const config = process.env.NODE_ENV === 'production' ? deployConfig : localConfig;
 
 // Crear el pool de conexiones con la configuración seleccionada
