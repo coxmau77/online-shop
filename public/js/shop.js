@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let productos = await response.json();
-            const listaDeProductos = document.getElementById('listaDeProductos');
+            // const listaDeProductos = document.getElementById('listaDeProductos');
 
             listaDeProductos.innerHTML = '';
 
