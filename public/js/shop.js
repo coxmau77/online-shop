@@ -197,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let productos = await response.json();
-            // const listaDeProductos = document.getElementById('listaDeProductos');
 
             listaDeProductos.innerHTML = '';
 
@@ -206,11 +205,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 col.classList.add('col');
 
                 let structure = `
-                    <div class="card shadow-sm">
+                    <div class="card">
                         <img src="./images/web-images/image_placeholader.png" alt="..." width="100%" class="card-img-top mx-auto d-block" data-bs-toggle="modal" data-bs-target="#${producto.sku}">
                         <div class="card-body">
                             <h3 class="my-2 modal-title" id="exampleModalLabel" data-bs-toggle="modal" data-bs-target="#${producto.sku}">${producto.titulo}</h3>
-                            <h4 class="my-2 modal-title" id="exampleModalLabel" data-bs-toggle="modal" data-bs-target="#${producto.sku}">${producto.sku}</h4>
+                            <h5 class="my-2 modal-title text-primary" id="exampleModalLabel" data-bs-toggle="modal" data-bs-target="#${producto.sku}">SKU# ${producto.sku}</h5>
                             <p class="card-text" data-bs-toggle="modal" data-bs-target="#${producto.sku}">${producto.descripcion}</p>
                             <div class="d-flex justify-content-center align-items-center">
                                 <h1 class="card-title pricing-card-title" data-bs-toggle="modal" data-bs-target="#${producto.sku}">
@@ -269,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Actualizar Producto
             document.querySelectorAll('.update').forEach(button => {
                 button.addEventListener('click', event => {
+
                     console.log("click update");
 
                     const id = event.target.getAttribute('data-id');
@@ -308,7 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     // Actualizar producto
     editarProductoForm.addEventListener('submit', async event => {
         event.preventDefault();
@@ -337,6 +336,111 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     listarProductos();
+
+    // --------------------------------------------------
+    document.getElementById('searchButton').addEventListener('click', async event => {
+        event.preventDefault();
+
+        console.log("search >");
+
+        const searchInput = document.getElementById('searchInput').value.trim();
+        if (!searchInput) {
+            alert('Por favor, ingresa un título o SKU del producto a buscar.');
+            return;
+        }
+        console.log("search >>");
+        try {
+            const response = await fetch(`/product/search?query=${searchInput}`);
+
+            const contentType = response.headers.get("content-type");
+            if (!response.ok) {
+                if (contentType && contentType.includes("application/json")) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || errorData.mensaje || 'Error al buscar el producto');
+                } else {
+                    const errorText = await response.text();
+                    throw new Error(errorText || 'Error al buscar el producto');
+                }
+            }
+            console.log("search >>>");
+            if (contentType && contentType.includes("application/json")) {
+                let producto = await response.json();
+
+                if (producto.length === 0) {
+                    alert('Producto no encontrado.');
+                    return;
+                }
+
+                const searchResult = document.getElementById('searchResult');
+                searchResult.innerHTML = '';
+
+                producto.forEach(prod => {
+                    let structure = `
+                    <div class="card border border-primary">
+                        <img src="./images/web-images/image_placeholader.png" alt="..." width="100%" class="card-img-top mx-auto d-block" data-bs-toggle="modal" data-bs-target="#${prod.sku}">
+                        <div class="card-body">
+                            <h3 class="my-2 modal-title" id="exampleModalLabel" data-bs-toggle="modal" data-bs-target="#${prod.sku}">${prod.titulo}</h3>
+                            <h4 class="my-2 modal-title" id="exampleModalLabel" data-bs-toggle="modal" data-bs-target="#${prod.sku}">${prod.sku}</h4>
+                            <p class="card-text" data-bs-toggle="modal" data-bs-target="#${prod.sku}">${prod.descripcion}</p>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <h1 class="card-title pricing-card-title" data-bs-toggle="modal" data-bs-target="#${prod.sku}">
+                                    <small class="text-muted fw-light">AR$</small>
+                                    ${prod.precio}
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="${prod.sku}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body row">
+                                    <div class="col-12 col-md-5">
+                                        <img src="./images/web-images/image_placeholader.png" alt="..." width="100%" class="card-img-top mx-auto d-block rounded">
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <div class="col p-4 d-flex flex-column position-static">
+                                            <h3 class="my-2 modal-title" id="exampleModalLabel">
+                                                ${prod.titulo}
+                                                <span class="badge bg-primary bg-primary">SKU# ${prod.sku}</span>
+                                            </h3>
+                                            <p>${prod.descripcion}</p>
+                                            <h1 class="card-title pricing-card-title">
+                                                <small class="text-muted fw-light">AR$</small>
+                                                ${prod.precio}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-end">
+                                    <button type="button" class="btn btn-primary my-2 w-50 rounded-pill" data-bs-dismiss="modal">
+                                        <i class="bi bi-cart-plus-fill"></i>
+                                        Comprar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                    searchResult.innerHTML = structure;
+                });
+            } else {
+                const errorText = await response.text();
+                throw new Error(errorText || 'Respuesta inesperada del servidor');
+            }
+        } catch (error) {
+            console.error('Error al buscar el producto:', error);
+            alert('Error al buscar el producto: ' + error.message);
+        }
+
+        document.getElementById('search').reset();
+    });
+
+    // --------------------------------------------------
 });
 
 

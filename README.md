@@ -27,3 +27,18 @@ https://www.freesqldatabase.com/account/
 https://vercel.com/mauricios-projects-8b7b5bd9 
 
 Entrega de TP: https://forms.gle/Zobu3nTuGA8iiYSL7 
+
+
+/my-express-app
+|-- /public
+|   |-- index.html
+|   |-- /js
+|       |-- script.js
+|-- /controllers
+|   |-- product.controller.js
+|-- /routes
+|   |-- product.routes.js
+|-- /db
+|   |-- bd.js
+|-- server.js
+|-- package.json

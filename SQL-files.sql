@@ -1,7 +1,7 @@
-CREATE DATABASE IF NOT EXISTS online_shop;
+
 CREATE DATABASE IF NOT EXISTS usuarios_db;
 DROP TABLE usuarios;
-DROP TABLE users;
+
 
 USE usuarios_db;
 

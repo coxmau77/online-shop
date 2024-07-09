@@ -24,12 +24,19 @@
 
 <body>
     <section class=" p-3 fixed-top bg-body-tertiary">
-        <div class="container d-flex justify-content-end align-items-center">
-            <!-- <div>
-                <a href="./index.html">index</a>
-                <a href="./form.html">form</a>
-                <a href="add-product.html">add product</a>
-            </div> -->
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a href="./index.html">
+                <img src="./images/brand/brand-icon.svg" class="brand-icon" alt="Icono de la marca">
+            </a>
+
+            <form class="d-flex gap-2" id="search">
+                <input type="text" class="form-control rounded-pill border border-1 py-2 px-4  flex-grow-1"
+                    id="searchInput" placeholder="Buscar por título o SKU#">
+                <button id="searchButton" class="btn btn-primary rounded-circle lh-1">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
 
             <div class="text-primary fs-4">
                 <i class="dark-mode mx-2 bi bi-lightbulb-fill"></i>
@@ -104,6 +111,10 @@
                 <i class="bi bi-person-fill-x"></i>
                 Cerrar Sesión
             </button>
+        </div>
+        <!-- Resultado de busqueda -->
+        <div id="searchResult" class="row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">
+
         </div>
         <!-- Lista de productos -->
         <div id="product_list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-5">

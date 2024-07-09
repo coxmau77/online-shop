@@ -76,6 +76,24 @@ const uploadProduct = (request, response) => {
     });
 };
 
-module.exports = { getAll, deleteProduct, uploadProduct, createProduct }
+const searchProduct = (request, response) => {
+    const query = request.query.query;
+    console.log("const searchProduct >");
+    const SQL = `SELECT * FROM products WHERE titulo LIKE ? OR sku = ?`;
+    dataBase.query(SQL, [`%${query}%`, query], (error, result) => {
+        if (error) {
+            console.error('Error al ejecutar la consulta:', error);
+            return response.status(500).json({ error: 'Error en el servidor' });
+        }
+
+        if (result.length === 0) {
+            return response.status(404).json({ mensaje: 'Producto no encontrado' });
+        }
+
+        response.json(result);
+    });
+};
+
+module.exports = { getAll, deleteProduct, uploadProduct, createProduct, searchProduct }
 
 
